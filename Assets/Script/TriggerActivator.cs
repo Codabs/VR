@@ -13,15 +13,17 @@ public class TriggerActivator : MonoBehaviour
     [SerializeField] private AudioSource soundWhenActivated;
     [SerializeField] private AudioSource soundWhenDeActivated;
     private List<GameObject> colliders = new();
-    [SerializeField] private Light lightComponent; 
+    [SerializeField] private Light lightComponent;
+    private bool IsActive = false;
     //
     //MONOBEHAVIOUR
     //
     private void OnTriggerEnter(Collider other)
     {
-        if(tagToCollide.Contains(other.gameObject.tag))
+        if(tagToCollide.Contains(other.gameObject.tag) && !IsActive)
         {
             colliders.Add(other.gameObject);
+            IsActive = true;
             //SetTheLightColor(Color.green);
             ActivateOtherGameObject();
         }
@@ -33,6 +35,7 @@ public class TriggerActivator : MonoBehaviour
             colliders.Remove(other.gameObject);
             if(colliders.Count <= 0)
             {
+                IsActive = false;
                 DeactivateOtherGameObject();
             }
         }
