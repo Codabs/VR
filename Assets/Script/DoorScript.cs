@@ -5,28 +5,27 @@ using DG.Tweening;
 
 public class DoorScript : ActivatableObject
 {
-    [SerializeField] private float doorLeftEnding;
-    [SerializeField] private float doorRightEnding;
-    private float doorLeftStartingPosition;
-    private float doorRightStartingPosition;
+    [SerializeField] private Transform doorLeftEnding;
+    [SerializeField] private Transform doorRightEnding;
+    private Vector3 doorLeftStartingPosition;
+    private Vector3 doorRightStartingPosition;
     [SerializeField] private Transform doorLeft;
     [SerializeField] private Transform doorRight;
     private void Awake()
     {
-        doorRightStartingPosition = doorRight.position.x;
-        doorLeftStartingPosition = doorLeft.position.x;
+        doorRightStartingPosition = doorRight.position;
+        doorLeftStartingPosition = doorLeft.position;
     }
     public override void Activate()
     {
-        doorLeft.DOMoveX(doorLeftEnding, 1);
-        doorRight.DOMoveX(doorRightEnding, 1);
+        doorLeft.DOMove(doorLeftEnding.position, 1);
+        doorRight.DOMove(doorRightEnding.position, 1);
         print("open");
     }
-
     public override void Deactivate()
     {
-        doorLeft.DOMoveX(doorLeftStartingPosition, 1);
-        doorRight.DOMoveX(doorRightStartingPosition, 1);
+        doorLeft.DOMove(doorLeftStartingPosition, 1);
+        doorRight.DOMove(doorRightStartingPosition, 1);
         print("unopen");
     }
 }
