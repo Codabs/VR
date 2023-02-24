@@ -7,6 +7,9 @@ TagManager:
   - FxTemporaire
   - RayCapteur
   - Cube
+  - Pyramid
+  - Sphere
+  - Meuh
   layers:
   - Default
   - TransparentFX
