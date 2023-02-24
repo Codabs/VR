@@ -27,7 +27,6 @@ public class BoiteAMeuh : MonoBehaviour
         {
             side = sideType.Mid;
         }
-        print($"{transform.eulerAngles}");
 
 
         if (sideType.Up == side && onceSide)

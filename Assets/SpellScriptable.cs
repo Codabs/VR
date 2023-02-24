@@ -9,4 +9,5 @@ public class SpellScriptable : ScriptableObject
     public Sprite spriteSpell;
     public List<Vector3> listPath;
     public GameObject spellObject;
+    public Material orb1, orb2;
 }
