@@ -16,12 +16,28 @@ public class Pouvoir : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            Bouclier();
+            StartCoroutine(Bouclier());
         }
     }
 
-    public void Bouclier ()
+    public IEnumerator Bouclier ()
     {
-        shield.SetActive(true);
-    }
+        int i = 0;
+        while (i < 6)
+        {
+        if (i == 5)
+        { 
+          shield.SetActive(false);
+          i++;
+          Debug.Log(i);
+        }
+        else
+        {
+            Debug.Log(i);
+            shield.SetActive(true);
+            i++;
+            yield return new WaitForSeconds(5f);
+        }
+        }
+     }
 }
