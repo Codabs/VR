@@ -16,7 +16,7 @@ public class Laser : MonoBehaviour
     private void FixedUpdate()
     {
         lr.gameObject.transform.position= Vector3.zero;
-        lr.SetPosition(0, Emitter.transform.position);
+        lr.SetPosition(0, Vector3.zero);
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(Emitter.transform.position, Emitter.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
